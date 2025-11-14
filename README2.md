@@ -24,61 +24,39 @@ This project allows users to **limit, remove, or check network bandwidth** on Li
 - sudo privileges
 
 ---
+## install dependensis
+- pip3 install -r requirements.txt
+  
+## Make sure iproute2 and iperf3 are installed:
 
-## Installation
+-sudo apt update
+-sudo apt install iproute2 iperf3 -y
 
-1. Clone this repository:
+## usage
 
-```bash
-git clone https://github.com/Vaishnavi12965/network-traffic-controller.git
-cd network-traffic-controller
+Check current status:
+-sudo python3 controller.py eth0 --status
 
-2. Install dependencies 
+Apply a bandwidth limit:
+-sudo python3 controller.py eth0 --limit 100mbit
 
+Remove bandwidth limit:
+-sudo python3 controller.py eth0 --remove
 
-pip3 install -r requirements.txt
+## Test with iperf3:
 
-3. Make sure iproute2 and iperf3 are installed:
+On Linux client:
+-iperf3 -c <server-ip>
 
-
-
-sudo apt update
-sudo apt install iproute2 iperf3 -y
-
-## Usage
-
-1 Check current status:
-
-sudo python3 controller.py eth0 --status
-
-2 Apply a bandwidth limit:
-
-sudo python3 controller.py eth0 --limit 100mbit
-
-3 Remove bandwidth limit:
-
-sudo python3 controller.py eth0 --remove
-
-4 Test with iperf3:
-
-5 On Linux client:
-
-iperf3 -c <server-ip>
-
-6 On Windows server:
-
-iperf3.exe -s
+On Windows server:
+-iperf3.exe -s
 
 ## How It Works
 
-Uses Linux tc command to manage queueing disciplines (qdisc) for traffic shaping.
+-Uses Linux tc command to manage queueing disciplines (qdisc) for traffic shaping.
+-Python script wraps tc commands for easy CLI usage.
+-Works in real time without restarting network interfaces
 
-Python script wraps tc commands for easy CLI usage.
-
-Works in real time without restarting network interfaces
-
-Author
-vaishnavi
+## Author
 yellagounivaishnavi@gmail.com
-
 
