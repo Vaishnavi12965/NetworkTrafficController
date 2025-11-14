@@ -77,3 +77,8 @@ Python script wraps tc commands for easy CLI usage.
 
 Works in real time without restarting network interfaces
 
+Author
+vaishnavi
+yellagounivaishnavi@gmail.com
+
+
